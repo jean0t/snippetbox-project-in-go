@@ -14,12 +14,12 @@ func home(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	w.Write([]byte("Hello from Snippetbox"))
+	w.Write([]byte("Hello from Snippetbox\n"))
 }
 
 // Add a showSnippet handler
 func showSnippet(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Display a specific snippet..."))
+	w.Write([]byte("Display a specific snippet...\n"))
 }
 
 // Add a createSnippet handler
@@ -29,11 +29,11 @@ func createSnippet(w http.ResponseWriter, r *http.Request) {
 	// he w.Write() method will be used to return "Method Not Allowed" in the response body
 	if r.Method != "POST" {
 		w.WriteHeader(405)
-		w.Write([]byte("Method Not Allowed"))
+		w.Write([]byte("Method Not Allowed\n"))
 		return // doesn't allow the rest of the function body to run
 	}
 
-	w.Write([]byte("Create a new snippet..."))
+	w.Write([]byte("Create a new snippet...\n"))
 }
 
 func main() {
