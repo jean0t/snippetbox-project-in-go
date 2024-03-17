@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 // Define a home handler function which writes a byte slice as the response body
@@ -19,7 +21,12 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 // Add a showSnippet handler
 func showSnippet(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Display a specific snippet...\n"))
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil || id < 1 {
+		http.NotFound(w, r)
+		return
+	}
+	fmt.Fprintf(w, "Display a specific snippet with ID %d...\n", id)
 }
 
 // Add a createSnippet handler
@@ -29,8 +36,8 @@ func createSnippet(w http.ResponseWriter, r *http.Request) {
 	// he w.Write() method will be used to return "Method Not Allowed" in the response body
 	if r.Method != "POST" {
 		w.Header().Set("Allow", "POST")
-		w.WriteHeader(405)
-		w.Write([]byte("Method Not Allowed\n"))
+		http.Error(w, "Method Noy Allowed\n", 405)
+
 		return // doesn't allow the rest of the function body to run
 	}
 
