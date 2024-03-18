@@ -15,8 +15,12 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	absolutePath, _ := filepath.Abs("./cmd/ui/html/home.page.tmpl") //must be run in the parent folder (snippetbox in Go) to work
-	ts, err := template.ParseFiles(absolutePath)
+	absolutePath, _ := filepath.Abs("./cmd/ui/html") //must be run in the parent folder (snippetbox in Go) to work
+	files := []string{
+		filepath.Join(absolutePath, "home.page.tmpl"),
+		filepath.Join(absolutePath, "base.layout.tmpl"),
+	}
+	ts, err := template.ParseFiles(files...)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
