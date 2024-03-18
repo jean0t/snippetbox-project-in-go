@@ -19,6 +19,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	files := []string{
 		filepath.Join(absolutePath, "home.page.tmpl"),
 		filepath.Join(absolutePath, "base.layout.tmpl"),
+		filepath.Join(absolutePath, "footer.partial.tmpl"),
 	}
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
