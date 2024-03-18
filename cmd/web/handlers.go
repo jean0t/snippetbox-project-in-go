@@ -15,7 +15,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	absolutePath, _ := filepath.Abs("./cmd/ui/html/home.page.tmpl")
+	absolutePath, _ := filepath.Abs("./cmd/ui/html/home.page.tmpl") //must be run in the parent folder (snippetbox in Go) to work
 	ts, err := template.ParseFiles(absolutePath)
 	if err != nil {
 		log.Println(err.Error())
