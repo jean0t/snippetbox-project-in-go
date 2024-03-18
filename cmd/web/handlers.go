@@ -12,17 +12,17 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Write([]bytes("Hello from Snippetbox\n"))
+	w.Write([]byte("Hello from Snippetbox\n"))
 }
 
-func showSnippets(w http.ResponseWriter, r *http.Request) {
+func showSnippet(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || id < 1 {
 		http.NotFound(w, r)
 		return
 	}
 
-	fmt.Fprintf(w, "Display a specific snippet with ID %d...", id)
+	fmt.Fprintf(w, "Display a specific snippet with ID %d...\n", id)
 }
 
 func createSnippet(w http.ResponseWriter, r *http.Request) {
@@ -32,5 +32,5 @@ func createSnippet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Write([]bytes("Create a New Snippet...\n"))
+	w.Write([]byte("Create a New Snippet...\n"))
 }
