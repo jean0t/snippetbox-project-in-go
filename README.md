@@ -1,7 +1,7 @@
 # snippetbox-project-in-go
 
 
-*Project made following the book "Let's Go" to learn about network apps in Golang*
+*Project made following the book "Let's Go" to learn about network apps in Golang.*
 *The CSS and HTML are not mine, but all the Go code is*
 
 
