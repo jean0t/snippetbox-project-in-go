@@ -2,6 +2,7 @@
 
 
 *Project made following the book "Let's Go" to learn about network apps in Golang*
+*The CSS and HTML are not mine, but all the Go code is*
 
 
 to run the server with the contents, save the archives of the project through a git clone
